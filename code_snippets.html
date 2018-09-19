@@ -1,0 +1,243 @@
+<div><a href="https://stackoverflow.com/a/7">https://stackoverflow.com/a/7</a></div><pre style="margin:5px; border: solid 2px">double trans = (double) trackBar1.Value / 5000.0;
+</pre><div><a href="https://stackoverflow.com/a/12">https://stackoverflow.com/a/12</a></div><pre style="margin:5px; border: solid 2px">var ts = new TimeSpan(DateTime.UtcNow.Ticks - dt.Ticks);
+double delta = Math.Abs(ts.TotalSeconds);
+
+if (delta &lt; 60)
+{
+  return ts.Seconds == 1 ? "one second ago" : ts.Seconds + " seconds ago";
+}
+if (delta &lt; 120)
+{
+  return "a minute ago";
+}
+if (delta &lt; 2700) // 45 * 60
+{
+  return ts.Minutes + " minutes ago";
+}
+if (delta &lt; 5400) // 90 * 60
+{
+  return "an hour ago";
+}
+if (delta &lt; 86400) // 24 * 60 * 60
+{
+  return ts.Hours + " hours ago";
+}
+if (delta &lt; 172800) // 48 * 60 * 60
+{
+  return "yesterday";
+}
+if (delta &lt; 2592000) // 30 * 24 * 60 * 60
+{
+  return ts.Days + " days ago";
+}
+if (delta &lt; 31104000) // 12 * 30 * 24 * 60 * 60
+{
+  int months = Convert.ToInt32(Math.Floor((double)ts.Days / 30));
+  return months &lt;= 1 ? "one month ago" : months + " months ago";
+}
+int years = Convert.ToInt32(Math.Floor((double)ts.Days / 365));
+return years &lt;= 1 ? "one year ago" : years + " years ago";
+</pre><div><a href="https://stackoverflow.com/a/18">https://stackoverflow.com/a/18</a></div><pre style="margin:5px; border: solid 2px">CREATE TABLE binary_data (
+    id INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    description CHAR(50),
+    bin_data LONGBLOB,
+    filename CHAR(50),
+    filesize CHAR(50),
+    filetype CHAR(50)
+);
+</pre><div><a href="https://stackoverflow.com/a/21">https://stackoverflow.com/a/21</a></div><pre style="margin:5px; border: solid 2px">double AgeDiff(DateTime date1, DateTime date2) {
+    double years = date2.Year - date1.Year;
+
+    /*
+     * If date2 and date1 + round(date2 - date1) are on different sides
+     * of 29 February, then our partial year is considered to have 366
+     * days total, otherwise it's 365. Note that 59 is the day number
+     * of 29 Feb.
+     */
+    double fraction = 365
+            + (DateTime.IsLeapYear(date2.Year) &amp;&amp; date2.DayOfYear &gt;= 59
+            &amp;&amp; (date1.DayOfYear &lt; 59 || date1.DayOfYear &gt; date2.DayOfYear)
+            ? 1 : 0);
+
+    /*
+     * The only really nontrivial case is if date1 is in a leap year,
+     * and date2 is not. So let's handle the others first.
+     */
+    if (DateTime.IsLeapYear(date2.Year) == DateTime.IsLeapYear(date1.Year))
+        return years + (date2.DayOfYear - date1.DayOfYear) / fraction;
+
+    /*
+     * If date2 is in a leap year, but date1 is not and is March or
+     * beyond, shift up by a day.
+     */
+    if (DateTime.IsLeapYear(date2.Year)) {
+        return years + (date2.DayOfYear - date1.DayOfYear
+                - (date1.DayOfYear &gt;= 59 ? 1 : 0)) / fraction;
+    }
+
+    /*
+     * If date1 is not on 29 February, shift down date1 by a day if
+     * March or later. Proceed normally.
+     */
+    if (date1.DayOfYear != 59) {
+        return years + (date2.DayOfYear - date1.DayOfYear
+                + (date1.DayOfYear &gt; 59 ? 1 : 0)) / fraction;
+    }
+
+    /*
+     * Okay, here date1 is on 29 February, and date2 is not on a leap
+     * year. What to do now? On 28 Feb in date2's year, the ``age''
+     * should be just shy of a whole number, and on 1 Mar should be
+     * just over. Perhaps the easiest way is to a point halfway
+     * between those two: 58.5.
+     */
+    return years + (date2.DayOfYear - 58.5) / fraction;
+}
+</pre><div><a href="https://stackoverflow.com/a/22">https://stackoverflow.com/a/22</a></div><pre style="margin:5px; border: solid 2px">DateTime birthDate = new DateTime(2000,3,1);
+int age = (int)Math.Floor((DateTime.Now - birthDate).TotalDays / 365.25D);
+</pre><div><a href="https://stackoverflow.com/a/26">https://stackoverflow.com/a/26</a></div><pre style="margin:5px; border: solid 2px">BLOB</pre><div><a href="https://stackoverflow.com/a/27">https://stackoverflow.com/a/27</a></div><pre style="margin:5px; border: solid 2px">public static string ToLongString(this TimeSpan time)
+{
+    string output = String.Empty;
+
+    if (time.Days &gt; 0)
+        output += time.Days + " days ";
+
+    if ((time.Days == 0 || time.Days == 1) &amp;&amp; time.Hours &gt; 0)
+        output += time.Hours + " hr ";
+
+    if (time.Days == 0 &amp;&amp; time.Minutes &gt; 0)
+        output += time.Minutes + " min ";
+
+    if (output.Length == 0)
+        output += time.Seconds + " sec";
+
+    return output.Trim();
+}
+</pre><div><a href="https://stackoverflow.com/a/30">https://stackoverflow.com/a/30</a></div><pre style="margin:5px; border: solid 2px">#include &lt;sys/socket.h&gt;
+
+int
+main()
+{
+    return AF_INET;
+}
+</pre><div><a href="https://stackoverflow.com/a/31">https://stackoverflow.com/a/31</a></div><pre style="margin:5px; border: solid 2px">div</pre><div><a href="https://stackoverflow.com/a/33">https://stackoverflow.com/a/33</a></div><pre style="margin:5px; border: solid 2px">Math.Floor</pre><div><a href="https://stackoverflow.com/a/44">https://stackoverflow.com/a/44</a></div><pre style="margin:5px; border: solid 2px">Reset()</pre><div><a href="https://stackoverflow.com/a/45">https://stackoverflow.com/a/45</a></div><pre style="margin:5px; border: solid 2px">Console.ReadLine()</pre><div><a href="https://stackoverflow.com/a/52">https://stackoverflow.com/a/52</a></div><pre style="margin:5px; border: solid 2px">private var gcCount:int;
+private function startGCCycle():void{
+    gcCount = 0;
+    addEventListener(Event.ENTER_FRAME, doGC);
+}
+private function doGC(evt:Event):void{
+    flash.system.System.gc();
+    if(++gcCount &gt; 1){
+        removeEventListener(Event.ENTER_FRAME, doGC);
+        setTimeout(lastGC, 40);
+    }
+}
+private function lastGC():void{
+    flash.system.System.gc();
+}
+</pre><div><a href="https://stackoverflow.com/a/53">https://stackoverflow.com/a/53</a></div><pre style="margin:5px; border: solid 2px">byteArray</pre><div><a href="https://stackoverflow.com/a/56">https://stackoverflow.com/a/56</a></div><pre style="margin:5px; border: solid 2px">&lt;input type="submit" name="submitButton" value="Previous Page" /&gt;
+&lt;input type="submit" name="submitButton" value="Next Page" /&gt;
+</pre><div><a href="https://stackoverflow.com/a/58">https://stackoverflow.com/a/58</a></div><pre style="margin:5px; border: solid 2px">&lt;input type="button" name="prev" value="Previous Page" /&gt;
+</pre><div><a href="https://stackoverflow.com/a/60">https://stackoverflow.com/a/60</a></div><pre style="margin:5px; border: solid 2px">ByteArray</pre><div><a href="https://stackoverflow.com/a/62">https://stackoverflow.com/a/62</a></div><pre style="margin:5px; border: solid 2px">var names = (from DataRow dr in dataTable.Rows
+             select (string)dr["Name"]).Distinct().OrderBy( name =&gt; name );
+</pre><div><a href="https://stackoverflow.com/a/65">https://stackoverflow.com/a/65</a></div><pre style="margin:5px; border: solid 2px">.docm</pre><div><a href="https://stackoverflow.com/a/68">https://stackoverflow.com/a/68</a></div><pre style="margin:5px; border: solid 2px">Skip</pre><div><a href="https://stackoverflow.com/a/73">https://stackoverflow.com/a/73</a></div><pre style="margin:5px; border: solid 2px">extern "C"</pre><div><a href="https://stackoverflow.com/a/77">https://stackoverflow.com/a/77</a></div><pre style="margin:5px; border: solid 2px">&lt;?php
+
+/** Plugin system **/
+
+$listeners = array();
+
+/* Create an entry point for plugins */
+function hook() {
+    global $listeners;
+
+    $num_args = func_num_args();
+    $args = func_get_args();
+
+    if($num_args &lt; 2)
+        trigger_error("Insufficient arguments", E_USER_ERROR);
+
+    // Hook name should always be first argument
+    $hook_name = array_shift($args);
+
+    if(!isset($listeners[$hook_name]))
+        return; // No plugins have registered this hook
+
+    foreach($listeners[$hook_name] as $func) {
+        $args = $func($args); 
+    }
+    return $args;
+}
+
+/* Attach a function to a hook */
+function add_listener($hook, $function_name) {
+    global $listeners;
+    $listeners[$hook][] = $function_name;
+}
+
+/////////////////////////
+
+/** Sample Plugin **/
+add_listener('a_b', 'my_plugin_func1');
+add_listener('str', 'my_plugin_func2');
+
+function my_plugin_func1($args) {
+    return array(4, 5);
+}
+
+function my_plugin_func2($args) {
+    return str_replace('sample', 'CRAZY', $args[0]);
+}
+
+/////////////////////////
+
+/** Sample Application **/
+
+$a = 1;
+$b = 2;
+
+list($a, $b) = hook('a_b', $a, $b);
+
+$str  = "This is my sample application\n";
+$str .= "$a + $b = ".($a+$b)."\n";
+$str .= "$a * $b = ".($a*$b)."\n";
+
+$str = hook('str', $str);
+echo $str;
+?&gt;
+</pre><div><a href="https://stackoverflow.com/a/78">https://stackoverflow.com/a/78</a></div><pre style="margin:5px; border: solid 2px">this.Opacity</pre><div><a href="https://stackoverflow.com/a/81">https://stackoverflow.com/a/81</a></div><pre style="margin:5px; border: solid 2px">System.totalMemory</pre><div><a href="https://stackoverflow.com/a/82">https://stackoverflow.com/a/82</a></div><pre style="margin:5px; border: solid 2px">select * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = 'ABC'
+</pre><div><a href="https://stackoverflow.com/a/84">https://stackoverflow.com/a/84</a></div><pre style="margin:5px; border: solid 2px">IEnumerable</pre><div><a href="https://stackoverflow.com/a/87">https://stackoverflow.com/a/87</a></div><pre style="margin:5px; border: solid 2px">./content/YYYYMMDDHHMMSS/
+</pre><div><a href="https://stackoverflow.com/a/98">https://stackoverflow.com/a/98</a></div><pre style="margin:5px; border: solid 2px">gettimeofday()</pre><div><a href="https://stackoverflow.com/a/100">https://stackoverflow.com/a/100</a></div><pre style="margin:5px; border: solid 2px">serialize()</pre><div><a href="https://stackoverflow.com/a/103">https://stackoverflow.com/a/103</a></div><pre style="margin:5px; border: solid 2px">XMLHttpRequest</pre><div><a href="https://stackoverflow.com/a/124">https://stackoverflow.com/a/124</a></div><pre style="margin:5px; border: solid 2px">var strSql:String = stream.readUTFBytes(stream.bytesAvailable);      
+var i:Number = 0;
+var strSqlSplit:Array = strSql.split(";");
+for (i = 0; i &lt; strSqlSplit.length; i++){
+    NonQuery(strSqlSplit[i].toString());
+}
+</pre><div><a href="https://stackoverflow.com/a/133">https://stackoverflow.com/a/133</a></div><pre style="margin:5px; border: solid 2px">String.split()</pre><div><a href="https://stackoverflow.com/a/139">https://stackoverflow.com/a/139</a></div><pre style="margin:5px; border: solid 2px">public function getName() {
+    $this-&gt;incrementNameCalled();
+    return $this-&gt;_getName();
+}
+
+protected function _getName() {
+    return $this-&gt;name;
+}
+</pre><div><a href="https://stackoverflow.com/a/152">https://stackoverflow.com/a/152</a></div><pre style="margin:5px; border: solid 2px">$filename = base64_url_decode($_REQUEST['file']);
+header("Cache-Control: public");
+header('Content-disposition: attachment; filename='.basename($filename));
+header("Content-Transfer-Encoding: binary");
+header('Content-Length: '. filesize($filename));
+
+//  Put either file counting code here. either a db or static files
+
+//
+
+readfile($filename);  //and spit the user the file
+
+
+function base64_url_decode($input) {
+    return base64_decode(strtr($input, '-_,', '+/='));
+}
+</pre><div><a href="https://stackoverflow.com/a/154">https://stackoverflow.com/a/154</a></div><pre style="margin:5px; border: solid 2px">$user = array("name" =&gt; "dubayou", 
+              "age" =&gt; 20,
+              "websites" =&gt; array("dubayou.com","willwharton.com","codecream.com"),
+              "and_one" =&gt; "more");
+</pre>
